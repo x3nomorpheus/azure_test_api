@@ -13,8 +13,7 @@
       agent {
 
       	docker { 
-	  image 'composer:latest'
-	  inside "--entrypoint=''"
+	  image 'finalgene/composer'
  	}
       } 
 
