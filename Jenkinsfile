@@ -14,7 +14,7 @@
 
       	docker { 
 	  image 'composer:latest'
-	  inside("""--entrypoint=''""")
+	  inside "--entrypoint=''"
  	}
       } 
 
