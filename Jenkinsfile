@@ -13,11 +13,12 @@
       agent {
 
       	docker { 
-	  image 'finalgene/composer'
+	  image 'php:8.0-apache'
  	}
       } 
 
       steps {
+	  sh 'curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer'
 	  sh 'cd code && composer install --prefer-dist --no-scripts --no-dev --no-autoloader "'
 	  sh 'cd code && ./vendor/bin/phpunit --verbose '
       }
@@ -51,7 +52,7 @@
       }
     }
 
-    stage('Deploying React.js container to Kubernetes') {
+    stage('Deploying Php container to Kubernetes') {
       steps {
          sh 'ssh -i /home/jenkins/.ssh/id_rsa -o "StrictHostKeyChecking no" kio@workstation kubectl --kubeconfig /home/kio/k8s/azurek8s delete deployment php'
 	 sh 'ssh -i /home/jenkins/.ssh/id_rsa -o "StrictHostKeyChecking no" kio@workstation kubectl --kubeconfig /home/kio/k8s/azurek8s apply -f /home/kio/k8s/kubernetes-apps/api.yaml'
