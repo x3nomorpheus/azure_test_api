@@ -18,7 +18,7 @@
       } 
 
       steps {
-	  sh 'curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/sbin --filename=composer'
+	  sh 'curl -sS https://getcomposer.org/installer | php -- --install-dir=code/ --filename=composer'
 	  sh 'cd code && composer install --prefer-dist --no-scripts --no-dev --no-autoloader "'
 	  sh 'cd code && ./vendor/bin/phpunit --verbose '
       }
