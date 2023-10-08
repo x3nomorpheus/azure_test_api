@@ -9,12 +9,12 @@
 
   stages {
 
-
-    stage('Running lint test') {
+    stage('Running phpunit tests') {
       agent {
 
       	docker { 
 	  image 'composer:latest'
+	  inside("""--entrypoint=''""")
  	}
       } 
 
