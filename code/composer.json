@@ -1,0 +1,17 @@
+{
+    "name": "x3nomorpheus/api",
+    "require": {
+        "phpunit/phpunit": "^9.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Api\\": "Api/"
+        }
+    },
+    "authors": [
+        {
+            "name": "x3nomorpheus",
+            "email": "karno@protonmail.ch"
+        }
+    ]
+}
