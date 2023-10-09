@@ -9,6 +9,8 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
 
+RUN adduser phpcomposeruser
+USER phpcomposeruser
 COPY code/ /var/www/
 WORKDIR /var/www/code
 RUN composer install --prefer-dist --no-scripts --no-dev --no-autoloader
